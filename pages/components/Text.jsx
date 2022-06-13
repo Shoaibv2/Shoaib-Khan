@@ -7,10 +7,6 @@ export default function Text(props) {
     fontStyle: "",
   });
 
-  const dark = () => {
-    document.querySelector(".body").style.backgroundColor = "black";
-  };
-
   const upperCase = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
@@ -36,7 +32,8 @@ export default function Text(props) {
   };
 
   const clearText = () => {
-    let newtext = setText("");
+    let newtext;
+    setText(newtext);
   };
 
   const speak = () => {
