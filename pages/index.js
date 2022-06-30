@@ -1,16 +1,14 @@
-import "bootstrap/dist/css/bootstrap.css";
-// import Sections from "./components/Sections";
-// import Header from "./components/Header";
-import Text from "./components/Text";
+import Header from "./components/Header";
 
 export default function Home() {
   return (
     <>
-      {/* <Header
-      primaryhead={["Home", "For Developers", "Portfolio"]}
-      secondaryhead={["About", "Contact"]}
-    /> */}
-      <Text />
+      <div className="text-center mt-5">
+        <h2 className="text-primary mb-3">Meet SK</h2>
+        <p>
+          Start a new project with me or take an existing one to the next level.
+        </p>
+      </div>
     </>
   );
 }

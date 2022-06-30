@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Script from "next/script";
 import Header from "./components/Header";
 
@@ -13,7 +14,12 @@ import Header from "./components/Header";
 </Head>;
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />;
+    </>
+  );
 }
 <Script>
   <script

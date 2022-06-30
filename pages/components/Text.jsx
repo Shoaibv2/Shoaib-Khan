@@ -2,6 +2,15 @@ import { useState } from "react";
 
 export default function Text(props) {
   const [text, setText] = useState("");
+  const [mode, setMode] = useState("light");
+
+  const ToggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+    } else {
+      setMode("light");
+    }
+  };
   const [textStyle, setTextStyle] = useState({
     fontWeight: "",
     fontStyle: "",
@@ -15,6 +24,10 @@ export default function Text(props) {
   const lowerCase = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
+  };
+
+  const copyText = () => {
+    navigator.clipboard.writeText(text);
   };
 
   const bold = () => {
@@ -32,8 +45,7 @@ export default function Text(props) {
   };
 
   const clearText = () => {
-    let newtext;
-    setText(newtext);
+    text = setText("");
   };
 
   const speak = () => {
@@ -48,6 +60,16 @@ export default function Text(props) {
 
   return (
     <div className="container mt-3">
+      <div class="form-check form-switch">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+          mode={mode}
+          ToggleMode={ToggleMode}
+        />
+      </div>
       <h2>Enter Text Here</h2>
       <textarea
         className="form-control"
@@ -63,10 +85,13 @@ export default function Text(props) {
         Convert To UPPERCASE
       </button>
       <button className="btn btn-primary mx-2" onClick={lowerCase}>
-        Convert To lowecase
+        Convert To lowercase
       </button>
       <button className="btn btn-primary mx-2" onClick={clearText}>
-        Clear
+        Clear Text
+      </button>
+      <button className="btn btn-primary mx-2" onClick={copyText}>
+        Copy Text
       </button>
       <button className="btn btn-primary mx-2" onClick={speak}>
         Speak

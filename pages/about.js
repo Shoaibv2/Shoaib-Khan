@@ -1,0 +1,7 @@
+export default function About() {
+  return (
+    <>
+      <h1 className="text-center mt-5">About</h1>
+    </>
+  );
+}
