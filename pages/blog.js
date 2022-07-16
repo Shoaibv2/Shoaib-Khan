@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Blog.module.css";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
-export default function Blog() {
+const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/api/blogs")
@@ -14,19 +14,23 @@ export default function Blog() {
       });
   }, []);
   return (
-    <div className="container">
+    <div className={styles.container}>
       <main className={styles.main}>
         {blogs.map((blogitem) => {
           return (
-            <div className={styles.blogpost} key={blogitem.slug}>
+            <div key={blogitem.slug}>
               <Link href={`/blogpost/${blogitem.slug}`}>
-                <h2>{blogitem.title}</h2>
+                <h3 className={styles.blogItemh3}>{blogitem.title}</h3>
               </Link>
-              <p>{blogitem.content.substring(0, 140)}</p>
+              <p className={styles.blogItemp}>
+                {blogitem.content.substr(0, 140)}...
+              </p>
             </div>
           );
         })}
       </main>
     </div>
   );
-}
+};
+
+export default Blog;
